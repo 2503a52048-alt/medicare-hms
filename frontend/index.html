@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MediCare – Hospital Appointment Management System</title>
+  <meta name="description" content="Book doctor appointments online at MediCare Hospital. Find the right specialist, pick a time slot and pay securely.">
+  <script src="/js/theme-init.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+</head>
+<body id="home">
+
+<div class="emergency-bar py-1">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <span><i class="bi bi-exclamation-triangle-fill me-1"></i>Medical emergency? Call
+      <a data-setting-tel="emergency_phone" href="tel:108"><span data-setting="emergency_phone">108</span></a> immediately.</span>
+    <span class="d-none d-md-inline"><i class="bi bi-clock me-1"></i><span data-setting="working_hours">Mon - Sat: 9:00 AM - 6:00 PM</span></span>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg site-nav sticky-top">
+  <div class="container">
+    <a class="brand-link" href="#home">
+      <img src="/assets/logo.svg" alt="" width="38" height="38">
+      <span>MediCare<small>HOSPITAL APPOINTMENT MANAGEMENT SYSTEM</small></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="#doctors">Our Doctors</a></li>
+        <li class="nav-item"><a class="nav-link" href="#specializations">Specializations</a></li>
+        <li class="nav-item"><a class="nav-link book-link" href="/login.html?role=patient&amp;next=doctors">Book Appointment</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+        <li class="nav-item dropdown" id="authMenu">
+          <a class="btn btn-primary ms-lg-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login / Register</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/login.html?role=patient"><i class="bi bi-person me-2"></i>Patient Login</a></li>
+            <li><a class="dropdown-item" href="/login.html?role=doctor"><i class="bi bi-heart-pulse me-2"></i>Doctor Login</a></li>
+            <li><a class="dropdown-item" href="/login.html?role=admin"><i class="bi bi-shield-lock me-2"></i>Admin Login</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item fw-semibold" href="/register.html"><i class="bi bi-person-plus me-2"></i>Register as Patient</a></li>
+          </ul>
+        </li>
+        <li class="nav-item d-none" id="dashMenu"><a class="btn btn-primary ms-lg-2" href="#" id="dashLink">My Dashboard</a></li>
+        <li class="nav-item"><button class="btn btn-outline-secondary ms-lg-2 theme-toggle" type="button" aria-label="Toggle dark mode"></button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="badge bg-brand-soft text-brand px-3 py-2 mb-3"><i class="bi bi-patch-check-fill me-1"></i>Verified doctors &middot; Secure online booking</span>
+        <h1 class="display-4 mb-3">Quality healthcare, <span class="text-brand">booked in minutes.</span></h1>
+        <p class="lead text-secondary mb-4">Find the right specialist, choose a time that suits you and pay a simple consultation fee online. No queues, no phone calls.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-primary btn-lg px-4 book-link" href="/login.html?role=patient&amp;next=doctors"><i class="bi bi-calendar2-plus me-2"></i>Book Appointment</a>
+          <a class="btn btn-outline-primary btn-lg px-4" href="#specializations">Explore Specializations</a>
+        </div>
+        <p class="small text-secondary mt-3 mb-0"><i class="bi bi-info-circle me-1"></i>Our guidance feature suggests the right specialization. It is not a medical diagnosis.</p>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img class="hero-img" src="/assets/hero.svg" alt="Illustration of the MediCare hospital building and a doctor" width="560" height="455">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="stat-strip">
+  <div class="container">
+    <div class="card-soft p-4">
+      <div class="row text-center g-3">
+        <div class="col-6 col-md-3"><div class="h2 fw-bold text-brand mb-0" id="statDoctors">-</div><div class="small text-secondary">Verified doctors</div></div>
+        <div class="col-6 col-md-3"><div class="h2 fw-bold text-brand mb-0" id="statSpecs">-</div><div class="small text-secondary">Specializations</div></div>
+        <div class="col-6 col-md-3"><div class="h2 fw-bold text-brand mb-0" id="statFee">-</div><div class="small text-secondary">Standard consultation fee</div></div>
+        <div class="col-6 col-md-3"><div class="h2 fw-bold text-brand mb-0">24/7</div><div class="small text-secondary">Online booking</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 reveal">
+        <h2 class="section-title mb-3">About <span data-setting="hospital_name">MediCare Hospital</span></h2>
+        <p class="text-secondary">MediCare brings a multi-specialty hospital and a simple booking system together. Patients can search for doctors, see real-time free time slots and confirm a visit online. Doctors manage their own schedules and consultations, and the hospital administration keeps everything verified and transparent.</p>
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2"><i class="bi bi-check-circle-fill text-brand me-2"></i>Every doctor is verified by hospital administration</li>
+          <li class="mb-2"><i class="bi bi-check-circle-fill text-brand me-2"></i>Real-time availability, so no double bookings</li>
+          <li class="mb-2"><i class="bi bi-check-circle-fill text-brand me-2"></i>Digital prescriptions and your medical history in one place</li>
+          <li><i class="bi bi-check-circle-fill text-brand me-2"></i>Reminders by notification and email before your visit</li>
+        </ul>
+      </div>
+      <div class="col-lg-6 reveal">
+        <div class="row g-3">
+          <div class="col-6"><div class="card-soft p-4 h-100"><div class="icon-bubble mb-3"><i class="bi bi-building"></i></div><h3 class="h6">Modern facility</h3><p class="small text-secondary mb-0">Comfortable consultation rooms and diagnostics.</p></div></div>
+          <div class="col-6"><div class="card-soft p-4 h-100"><div class="icon-bubble mb-3"><i class="bi bi-people"></i></div><h3 class="h6">Expert doctors</h3><p class="small text-secondary mb-0">Experienced specialists across many fields.</p></div></div>
+          <div class="col-6"><div class="card-soft p-4 h-100"><div class="icon-bubble mb-3"><i class="bi bi-shield-check"></i></div><h3 class="h6">Safe and private</h3><p class="small text-secondary mb-0">Your records are visible only to you and your doctor.</p></div></div>
+          <div class="col-6"><div class="card-soft p-4 h-100"><div class="icon-bubble mb-3"><i class="bi bi-phone"></i></div><h3 class="h6">Works on any device</h3><p class="small text-secondary mb-0">Book from your phone, tablet or computer.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft-grey" id="specializations">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <h2 class="section-title">Our Medical Specializations</h2>
+      <p class="section-sub">Choose a department, or let our guidance feature point you to the right specialist after you log in.</p>
+    </div>
+    <div class="row g-4" id="specGrid"><div class="col-12 text-center py-4"><div class="spinner-border text-primary" role="status"></div></div></div>
+  </div>
+</section>
+
+<section class="section" id="doctors">
+  <div class="container">
+    <div class="text-center mb-5 reveal">
+      <h2 class="section-title">Featured Doctors</h2>
+      <p class="section-sub">Experienced, verified specialists ready to see you.</p>
+    </div>
+    <div class="row g-4" id="doctorGrid"><div class="col-12 text-center py-4"><div class="spinner-border text-primary" role="status"></div></div></div>
+    <div class="text-center mt-4"><a class="btn btn-outline-primary book-link" href="/login.html?role=patient&amp;next=doctors">Search all doctors</a></div>
+  </div>
+</section>
+
+<section class="section bg-soft-grey" id="how">
+  <div class="container">
+    <div class="text-center mb-5 reveal"><h2 class="section-title">How Appointment Booking Works</h2></div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 card-hover"><div class="step-no mb-3">1</div><h3 class="h6">Create your account</h3><p class="small text-secondary mb-0">Register with your mobile number and verify it with a one-time password.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 card-hover"><div class="step-no mb-3">2</div><h3 class="h6">Find your doctor</h3><p class="small text-secondary mb-0">Search by name or specialization, or pick your health concern for guidance.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 card-hover"><div class="step-no mb-3">3</div><h3 class="h6">Pick a date and slot</h3><p class="small text-secondary mb-0">See live free slots. A booked slot disappears for everyone else.</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 card-hover"><div class="step-no mb-3">4</div><h3 class="h6">Pay and get confirmed</h3><p class="small text-secondary mb-0">Pay by UPI, card or net banking, then download your receipt.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="container">
+    <div class="text-center mb-5 reveal"><h2 class="section-title">Why Choose Our Hospital</h2></div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal"><div class="d-flex gap-3"><div class="icon-bubble"><i class="bi bi-patch-check"></i></div><div><h3 class="h6">Verified specialists</h3><p class="small text-secondary mb-0">Qualifications are checked before a doctor can accept patients.</p></div></div></div>
+      <div class="col-md-6 col-lg-4 reveal"><div class="d-flex gap-3"><div class="icon-bubble"><i class="bi bi-lightning-charge"></i></div><div><h3 class="h6">Fast, simple booking</h3><p class="small text-secondary mb-0">Book in under two minutes from anywhere.</p></div></div></div>
+      <div class="col-md-6 col-lg-4 reveal"><div class="d-flex gap-3"><div class="icon-bubble"><i class="bi bi-cash-coin"></i></div><div><h3 class="h6">Transparent fees</h3><p class="small text-secondary mb-0">The consultation fee is shown before you pay.</p></div></div></div>
+      <div class="col-md-6 col-lg-4 reveal"><div class="d-flex gap-3"><div class="icon-bubble"><i class="bi bi-file-medical"></i></div><div><h3 class="h6">Digital records</h3><p class="small text-secondary mb-0">Prescriptions and history are available any time.</p></div></div></div>
+      <div class="col-md-6 col-lg-4 reveal"><div class="d-flex gap-3"><div class="icon-bubble"><i class="bi bi-bell"></i></div><div><h3 class="h6">Smart reminders</h3><p class="small text-secondary mb-0">Never miss a visit with notifications and email.</p></div></div></div>
+      <div class="col-md-6 col-lg-4 reveal"><div class="d-flex gap-3"><div class="icon-bubble"><i class="bi bi-arrow-repeat"></i></div><div><h3 class="h6">Flexible changes</h3><p class="small text-secondary mb-0">Reschedule or cancel from your dashboard.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft-grey" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5 reveal"><h2 class="section-title">What Our Patients Say</h2>
+      <p class="section-sub">Genuine reviews from patients after completed consultations.</p></div>
+    <div class="row g-4" id="testimonialGrid"></div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="text-center mb-5 reveal"><h2 class="section-title">Contact Us</h2></div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 text-center"><div class="icon-bubble mx-auto mb-3"><i class="bi bi-geo-alt"></i></div><h3 class="h6">Address</h3><p class="small text-secondary mb-0" data-setting="hospital_address">-</p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 text-center"><div class="icon-bubble mx-auto mb-3"><i class="bi bi-telephone"></i></div><h3 class="h6">Phone</h3><p class="small mb-0"><a data-setting-tel="hospital_phone" href="#"><span data-setting="hospital_phone">-</span></a></p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 text-center"><div class="icon-bubble mx-auto mb-3"><i class="bi bi-envelope"></i></div><h3 class="h6">Email</h3><p class="small mb-0"><a id="mailLink" href="#"><span data-setting="hospital_email">-</span></a></p></div></div>
+      <div class="col-md-6 col-lg-3 reveal"><div class="card-soft p-4 h-100 text-center"><div class="icon-bubble mx-auto mb-3" style="background:#fdecee;color:#b02a37"><i class="bi bi-hospital"></i></div><h3 class="h6">Emergency</h3><p class="small mb-0"><a data-setting-tel="emergency_phone" href="tel:108" class="fw-bold text-danger"><span data-setting="emergency_phone">108</span></a><br><span class="text-secondary">Available 24 hours</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer pt-5 pb-3">
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-5">
+        <div class="d-flex align-items-center gap-2 mb-2"><img src="/assets/logo.svg" alt="" width="36" height="36"><span class="h5 text-white mb-0">MediCare</span></div>
+        <p class="small mb-0" data-setting="hospital_tagline">Compassionate care, simple appointments</p>
+      </div>
+      <div class="col-6 col-lg-3">
+        <h3 class="h6 text-white">Quick links</h3>
+        <ul class="list-unstyled small mb-0">
+          <li><a href="#about">About Us</a></li><li><a href="#doctors">Our Doctors</a></li><li><a href="#specializations">Specializations</a></li><li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-4">
+        <h3 class="h6 text-white">Portals</h3>
+        <ul class="list-unstyled small mb-0">
+          <li><a href="/login.html?role=patient">Patient Login</a></li><li><a href="/register.html">Patient Registration</a></li>
+          <li><a href="/login.html?role=doctor">Doctor Login</a></li><li><a href="/login.html?role=admin">Admin Login</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="border-secondary">
+    <p class="small text-center mb-0">&copy; <span id="year"></span> MediCare – Hospital Appointment Management System. College project. In an emergency call 108.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

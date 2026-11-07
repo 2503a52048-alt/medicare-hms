@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" role="img" aria-label="Illustration of a modern hospital building with a doctor">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6f0ff"/>
+      <stop offset="1" stop-color="#f6faff"/>
+    </linearGradient>
+    <linearGradient id="bld" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e3ecfb"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="520" rx="36" fill="url(#sky)"/>
+  <circle cx="520" cy="110" r="64" fill="#cfe0ff" opacity=".7"/>
+  <circle cx="90" cy="430" r="90" fill="#cfe0ff" opacity=".5"/>
+  <!-- main building -->
+  <rect x="150" y="150" width="340" height="290" rx="16" fill="url(#bld)" stroke="#b7cdf3" stroke-width="3"/>
+  <rect x="150" y="150" width="340" height="46" rx="16" fill="#0b5ed7"/>
+  <rect x="300" y="100" width="40" height="70" rx="6" fill="#0b5ed7"/>
+  <path d="M312 112h16v14h14v16h-14v14h-16v-14h-14v-16h14z" fill="#fff"/>
+  <!-- windows -->
+  <g fill="#bcd3f6">
+    <rect x="176" y="222" width="52" height="40" rx="6"/><rect x="294" y="222" width="52" height="40" rx="6"/><rect x="412" y="222" width="52" height="40" rx="6"/>
+    <rect x="176" y="292" width="52" height="40" rx="6"/><rect x="412" y="292" width="52" height="40" rx="6"/>
+  </g>
+  <!-- door -->
+  <rect x="284" y="350" width="72" height="90" rx="10" fill="#0b5ed7"/>
+  <rect x="290" y="358" width="28" height="82" fill="#8fb4f2"/>
+  <rect x="322" y="358" width="28" height="82" fill="#8fb4f2"/>
+  <rect x="100" y="440" width="440" height="16" rx="8" fill="#b7cdf3"/>
+  <!-- ambulance-style cross badge -->
+  <circle cx="500" cy="380" r="46" fill="#fff" stroke="#b7cdf3" stroke-width="3"/>
+  <path d="M492 356h16v16h16v16h-16v16h-16v-16h-16v-16h16z" fill="#e03a3a"/>
+  <!-- doctor -->
+  <g transform="translate(96 330)">
+    <circle cx="48" cy="26" r="24" fill="#f1c9a5"/>
+    <path d="M24 22c0-18 14-24 26-22 14 2 22 12 22 22-10-8-30-10-48 0z" fill="#3b2f2f"/>
+    <path d="M2 128c0-40 20-62 46-62s46 22 46 62z" fill="#ffffff" stroke="#b7cdf3" stroke-width="3"/>
+    <path d="M38 70l10 24 10-24" fill="#0b5ed7"/>
+    <path d="M30 88c-6 18 0 30 12 30" fill="none" stroke="#0b5ed7" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="44" cy="120" r="6" fill="#0b5ed7"/>
+  </g>
+  <!-- heartbeat line -->
+  <path d="M40 90h90l16-28 26 56 20-38 12 20h120" fill="none" stroke="#0b5ed7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
+</svg>

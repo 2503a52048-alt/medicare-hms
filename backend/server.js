@@ -69,18 +69,37 @@ app.use(express.static(frontend));
 
 app.use(errorHandler);
 
+
 const PORT = Number(process.env.PORT) || 3000;
-pool
-  .query('SELECT 1')
-  .then(() => {
-    app.listen(PORT, () => {
+
+async function startServer() {
+  try {
+    // Check MySQL database connection
+    await pool.query('SELECT 1');
+
+    console.log('MySQL connected successfully!');
+
+    // Start Express server
+    app.listen(PORT, '0.0.0.0', () => {
+
+      // Start background scheduler
       require('./services/scheduler').startScheduler();
-      console.log(`MediCare server running at http://localhost:${PORT}`);
-      console.log(`OTP mode: ${process.env.OTP_MODE || 'dev'} | Mail mode: ${process.env.MAIL_MODE || 'dev'} | Payment mode: ${process.env.PAYMENT_MODE || 'test'}`);
+
+      console.log(`MediCare server running on port ${PORT}`);
+      console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+
+      console.log(
+        `OTP mode: ${process.env.OTP_MODE || 'dev'} | ` +
+        `Mail mode: ${process.env.MAIL_MODE || 'dev'} | ` +
+        `Payment mode: ${process.env.PAYMENT_MODE || 'test'}`
+      );
     });
-  })
-  .catch((err) => {
-    console.error('Cannot connect to MySQL:', err.message);
-    console.error('Check DB_* values in .env and make sure MySQL is running and the schema is loaded (npm run db:init).');
+
+  } catch (err) {
+    console.error('Server startup failed!');
+    console.error('MySQL connection error:', err.message);
     process.exit(1);
-  });
+  }
+}
+
+startServer();
